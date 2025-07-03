@@ -11,27 +11,10 @@
     <strong>New: Support for Code Llama models and Nvidia GPUs.</strong>
     <br />
     <br />
-    <a href="https://umbrel.com"><strong>umbrel.com (we're hiring) »</strong></a>
-    <br />
-    <br />
     <a href="https://twitter.com/umbrel">
       <img src="https://img.shields.io/twitter/follow/umbrel?style=social" />
     </a>
-    <a href="https://t.me/getumbrel">
-      <img src="https://img.shields.io/badge/community-chat-%235351FB">
-    </a>
-    <a href="https://reddit.com/r/getumbrel">
-      <img src="https://img.shields.io/reddit/subreddit-subscribers/getumbrel?style=social">
-    </a>
-    <a href="https://community.umbrel.com">
-      <img src="https://img.shields.io/badge/community-forum-%235351FB">
-    </a>
   </p>
-</p>
-<p align="center">
-  <a href="https://umbrel.com/#start">
-    <img src="https://i.imgur.com/sj5vqEG.jpg" width="100%" />
-  </a>
 </p>
 
 ## Contents
@@ -39,14 +22,11 @@
 1. [Demo](#demo)
 2. [Supported Models](#supported-models)
 3. [How to install](#how-to-install)
-   - [On umbrelOS home server](#install-llamagpt-on-your-umbrelos-home-server)
    - [On M1/M2 Mac](#install-llamagpt-on-m1m2-mac)
    - [Anywhere else with Docker](#install-llamagpt-anywhere-else-with-docker)
    - [Kubernetes](#install-llamagpt-with-kubernetes)
 4. [OpenAI-compatible API](#openai-compatible-api)
-5. [Benchmarks](#benchmarks)
-6. [Roadmap and contributing](#roadmap-and-contributing)
-7. [Acknowledgements](#acknowledgements)
+5. [Acknowledgements](#acknowledgements)
 
 ## Demo
 
@@ -67,12 +47,6 @@ Currently, LlamaGPT supports the following models. Support for running custom mo
 
 ## How to install
 
-### Install LlamaGPT on your umbrelOS home server
-
-Running LlamaGPT on an [umbrelOS](https://umbrel.com) home server is one click. Simply install it from the [Umbrel App Store](https://apps.umbrel.com/app/llama-gpt).
-
-[![LlamaGPT on Umbrel App Store](https://apps.umbrel.com/app/llama-gpt/badge-light.svg)](https://apps.umbrel.com/app/llama-gpt)
-
 ### Install LlamaGPT on M1/M2 Mac
 
 Make sure your have Docker and Xcode installed.
@@ -80,7 +54,7 @@ Make sure your have Docker and Xcode installed.
 Then, clone this repo and `cd` into it:
 
 ```
-git clone https://github.com/getumbrel/llama-gpt.git
+wgit clone https://github.com/wickedyoda/llama-gpt.git
 cd llama-gpt
 ```
 
@@ -104,7 +78,7 @@ You can run LlamaGPT on any x86 or arm64 system. Make sure you have Docker insta
 Then, clone this repo and `cd` into it:
 
 ```
-git clone https://github.com/getumbrel/llama-gpt.git
+git clone https://github.com/wickedyoda/llama-gpt.git
 cd llama-gpt
 ```
 
@@ -166,71 +140,6 @@ Expose your service however you would normally do that.
 ## OpenAI compatible API
 
 Thanks to llama-cpp-python, a drop-in replacement for OpenAI API is available at `http://localhost:3001`. Open http://localhost:3001/docs to see the API documentation.
-
-## Benchmarks
-
-We've tested LlamaGPT models on the following hardware with the default system prompt, and user prompt: "How does the universe expand?" at temperature 0 to guarantee deterministic results. Generation speed is averaged over the first 10 generations.
-
-Feel free to add your own benchmarks to this table by opening a pull request.
-
-#### Nous Hermes Llama 2 7B Chat (GGML q4_0)
-
-| Device                              | Generation speed |
-| ----------------------------------- | ---------------- |
-| M1 Max MacBook Pro (64GB RAM)       | 54 tokens/sec    |
-| GCP c2-standard-16 vCPU (64 GB RAM) | 16.7 tokens/sec  |
-| Ryzen 5700G 4.4GHz 4c (16 GB RAM)   | 11.50 tokens/sec |
-| GCP c2-standard-4 vCPU (16 GB RAM)  | 4.3 tokens/sec   |
-| Umbrel Home (16GB RAM)              | 2.7 tokens/sec   |
-| Raspberry Pi 4 (8GB RAM)            | 0.9 tokens/sec   |
-
-#### Nous Hermes Llama 2 13B Chat (GGML q4_0)
-
-| Device                              | Generation speed |
-| ----------------------------------- | ---------------- |
-| M1 Max MacBook Pro (64GB RAM)       | 20 tokens/sec    |
-| GCP c2-standard-16 vCPU (64 GB RAM) | 8.6 tokens/sec   |
-| GCP c2-standard-4 vCPU (16 GB RAM)  | 2.2 tokens/sec   |
-| Umbrel Home (16GB RAM)              | 1.5 tokens/sec   |
-
-#### Nous Hermes Llama 2 70B Chat (GGML q4_0)
-
-| Device                              | Generation speed |
-| ----------------------------------- | ---------------- |
-| M1 Max MacBook Pro (64GB RAM)       | 4.8 tokens/sec   |
-| GCP e2-standard-16 vCPU (64 GB RAM) | 1.75 tokens/sec  |
-| GCP c2-standard-16 vCPU (64 GB RAM) | 1.62 tokens/sec  |
-
-#### Code Llama 7B Chat (GGUF Q4_K_M)
-
-| Device                        | Generation speed |
-| ----------------------------- | ---------------- |
-| M1 Max MacBook Pro (64GB RAM) | 41 tokens/sec    |
-
-#### Code Llama 13B Chat (GGUF Q4_K_M)
-
-| Device                        | Generation speed |
-| ----------------------------- | ---------------- |
-| M1 Max MacBook Pro (64GB RAM) | 25 tokens/sec    |
-
-#### Phind Code Llama 34B Chat (GGUF Q4_K_M)
-
-| Device                        | Generation speed |
-| ----------------------------- | ---------------- |
-| M1 Max MacBook Pro (64GB RAM) | 10.26 tokens/sec |
-
-## Roadmap and contributing
-
-We're looking to add more features to LlamaGPT. You can see the roadmap [here](https://github.com/getumbrel/llama-gpt/issues/8#issuecomment-1681321145). The highest priorities are:
-
-- [x] Moving the model out of the Docker image and into a separate volume.
-- [x] Add Metal support for M1/M2 Macs.
-- [x] Add support for Code Llama models.
-- [x] Add CUDA support for NVIDIA GPUs.
-- [ ] Add ability to load custom models.
-- [ ] Allow users to switch between models.
-
-If you're a developer who'd like to help with any of these, please open an issue to discuss the best way to tackle the challenge. If you're looking to help but not sure where to begin, check out [these issues](https://github.com/getumbrel/llama-gpt/labels/good%20first%20issue) that have specifically been marked as being friendly to new contributors.
 
 ## Acknowledgements
 

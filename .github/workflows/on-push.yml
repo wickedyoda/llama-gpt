@@ -1,4 +1,4 @@
-name: Build Docker images on master push
+name: Build Docker images on main push
 
 on:
   push:
